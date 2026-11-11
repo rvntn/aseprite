@@ -22,10 +22,11 @@ jobs:
         uses: ilammy/msvc-dev-cmd@v1
 
       - name: Download Prebuilt Skia
+        shell: pwsh
         run: |
-          curl -L -o skia.zip https://github.com/aseprite/skia/releases/download/m102-861e474326/Skia-Windows-Release-x64.zip
-          Expand-Archive -Path skia.zip -DestinationPath skia
-
+          $url = "https://github.com/aseprite/skia/releases/download/m102-861e474326/Skia-Windows-Release-x64.zip"
+          Invoke-WebRequest -Uri $url -OutFile "skia.zip" -UserAgent "Mozilla/5.0"
+          Expand-Archive -Path "skia.zip" -DestinationPath "skia" -Force
       - name: Configure CMake
         run: |
           mkdir build
