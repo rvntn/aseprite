@@ -16,7 +16,7 @@ jobs:
           submodules: recursive
 
       - name: Setup Ninja
-        uses: mechatrax/install-ninja-action@v2
+        uses: ashutoshvarma/setup-ninja@v1.1
 
       - name: Setup MSVC Compiler
         uses: ilammy/msvc-dev-cmd@v1
